@@ -221,8 +221,17 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             return true;
         }
 
-        // TODO (2) Launch the map when the map menu item is clicked
+        // COMPLETED (2) Launch the map when the map menu item is clicked
+        if (id == R.id.menu_map) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
 
+            Uri.Builder builder = new Uri.Builder();
+            builder.scheme("geo")
+                    .path("0,0")
+                    .query("Delhi,India");
+            intent.setData(builder.build());
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 }
